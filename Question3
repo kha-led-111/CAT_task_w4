@@ -1,0 +1,29 @@
+using System.Security.Cryptography.X509Certificates;
+
+namespace Event
+{
+    internal class Program
+    {
+
+       
+        delegate int calc(int[] arr);
+        static void Main(string[] args)
+        {
+
+
+            int[] arr = new int[3] { 1, 2, 3 };
+            int sum = 0;
+            calc c1 = (arr) =>
+            {
+                for (int i = 0; i < arr.Length; i++) { sum += arr[i]; }
+                return sum;
+            };
+
+            int result2 = c1(arr);
+            Console.WriteLine(result2);
+
+        }
+
+
+    }
+}
