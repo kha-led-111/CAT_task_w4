@@ -1,0 +1,57 @@
+using System.Security.Cryptography.X509Certificates;
+
+namespace Event
+{
+    internal class Program
+    {
+
+       
+        
+        static void Main(string[] args)
+        {
+            
+            var processor = new DataProcessor();
+
+            processor.OnDataReceived += DataReceived;
+
+            processor.SimulateDataReceived();
+        }
+
+
+        static void DataReceived(string data)
+        {
+            Console.WriteLine($"EVENT triggered: Received {data}");
+        }
+
+
+        internal class DataProcessor
+        {
+
+            public delegate void DataReceivedEventHandler(string data);
+
+            public event DataReceivedEventHandler OnDataReceived;
+
+            public void ProcessData(string data)
+            {
+                Console.WriteLine($"Processing: {data}");
+
+                if (OnDataReceived != null)
+                {
+                    OnDataReceived(data);
+                }
+            }
+
+            public void SimulateDataReceived()
+            {
+                string[] sampleData = { "Data 1", "Data 2", "Data 3" };
+
+                foreach (var data in sampleData)
+                {
+                    ProcessData(data);
+                }
+            }
+
+
+        }
+    }
+}
