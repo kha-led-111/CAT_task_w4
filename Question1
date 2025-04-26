@@ -1,0 +1,28 @@
+using System.Security.Cryptography.X509Certificates;
+
+namespace Event
+{
+    internal class Program
+    {
+
+        delegate int calculator(int num1, int num2);
+
+        static void Main(string[] args)
+        {
+
+
+            calculator add = (num1, num2) => num1 + num2;
+            int Add_result = add(10, 2);
+            Console.WriteLine(Add_result);
+            calculator subtraction=(num1, num2) => num1 - num2;
+            int Sub_result=subtraction(10, 2);
+            Console.WriteLine(Sub_result);
+            calculator multiplication = (num1, num2) => num1 * num2;
+            int mul_result=multiplication(10, 2);
+            Console.WriteLine(mul_result);
+
+        }
+
+
+    }
+}
